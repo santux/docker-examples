@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  base_mysql:
+    image: mysql:5.7.34
+    volumes:
+      - db_data_keycloack:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: demo
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: demo
+      #TZ: America/Mexico_City
+    ports:
+        - 3306:3306
+  keycloack:
+    image: quay.io/keycloak/keycloak:15.0.2
+    environment: 
+      DB_VENDOR: MYSQL
+      DB_ADDR: base_mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: demo
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: demo
+    ports: 
+      - 8080:8080
+    depends_on: 
+      - base_mysql
+volumes:
+  db_data_keycloack: {}
+
