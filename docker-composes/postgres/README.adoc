@@ -1,0 +1,13 @@
+= PostgreSQL en contenedores
+
+== Comandos
+
+====
+----
+docker build -t postgres-mx:14.9 .
+
+docker compose -f dc_postgres.yml up
+----
+====
+
+

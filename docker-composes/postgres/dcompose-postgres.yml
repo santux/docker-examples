@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  base_postgres:
+    image: postgres:12.10
+    volumes:
+      - postgresql_demo_data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      #TZ: America/Mexico_City
+    ports:
+        - 5432:5432
+volumes:
+  postgresql_demo_data: {}
+  
