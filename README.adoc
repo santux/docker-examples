@@ -1,0 +1,19 @@
+= Ejemplos practicos Docker
+
+
+== Postgres
+
+====
+----
+`docker compose -f dc_postgres.yml up`
+
+`docker build -t postgres-mx:14.5 .`
+----
+====
+
+
+
+====
+
+
+psql -h localhost -U demo -d postgres

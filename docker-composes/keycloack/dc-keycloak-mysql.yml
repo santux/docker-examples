@@ -30,4 +30,3 @@ services:
       - base_mysql
 volumes:
   db_data_keycloack: {}
-
