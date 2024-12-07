@@ -1,0 +1,31 @@
+= Docker Compose
+
+==
+
+
+
+====
+----
+`docker-compose -f dcompose-mysql.yml`
+`docker-compose -f dcompose-mysql.yml up`
+`docker-compose -f dcompose-mysql-57.yml`
+`docker-compose -f dcompose-mysql-57.yml up`
+`docker-compose -f dcompose-mysql-90.yml`
+`docker-compose -f dcompose-mysql-90.yml`
+`docker-compose -f dcompose-mysql-90.yml up`
+`mysql -h 127.0.0.1 -u demo -p`
+`docker-compose -f dcompose-mysql-84.yml`
+`docker-compose -f dcompose-mysql-84.yml up`
+`sudo snap refresh mysql-workbench-community`
+`sudo dnf search mysql`
+
+----
+====
+
+
+opening up Java EE - An Update
+
+David Delabassee
+
+Software evangelist
+Software Engineer Advocate
