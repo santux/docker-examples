@@ -1,7 +1,6 @@
 = Ejemplos practicos Docker
 
 
-
 == Postgres
 
 ====
