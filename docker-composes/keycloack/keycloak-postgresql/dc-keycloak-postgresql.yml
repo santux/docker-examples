@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:18.3-trixie # Use a specific version for stability, e.g., postgres:16
+    container_name: keycloak-postgres-db
+    volumes:
+      - postgres_data:/var/lib/postgresql # Persistent storage for PostgreSQL data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - keycloak_network
+    restart: always
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.5.5 # Use the latest stable Keycloak image
+    container_name: keycloak-server
+    command: start # Use 'start-dev' for development mode or 'start' for production
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_DB: postgres # Specify the database vendor
+      KC_DB_URL: jdbc:postgresql://postgres/${POSTGRES_DB} # Connection URL, 'postgres' is the service name
+      KC_DB_USERNAME: ${POSTGRES_USER}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_HOSTNAME: localhost # Set the hostname for development
+      KC_HOSTNAME_PORT: 8080 # Set the port for the hostname
+      KC_HTTP_ENABLED: true
+    ports:
+      - "8080:8080" # Map host port 8080 to container port 8080
+    depends_on:
+      - postgres # Ensure Postgres starts first
+    networks:
+      - keycloak_network
+    restart: always
+
+networks:
+  keycloak_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
