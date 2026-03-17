@@ -1,0 +1,20 @@
+# Forzar que todos los archivos de texto usen LF (formato Linux)
+# Esto evita errores de "env: bash\r: No such file or directory"
+* text=auto eol=lf
+
+# Archivos específicos de configuración
+*.yml text
+*.yaml text
+*.json text
+*.sh text eol=lf
+*.conf text
+
+# Dockerfiles y archivos de ignore
+Dockerfile text
+.dockerignore text
+.gitignore text
+
+# Evitar que Git intente "corregir" archivos binarios
+*.png binary
+*.jpg binary
+*.jar binary

@@ -1,0 +1,23 @@
+# Docker / PostgreSQL data
+# Ignora la carpeta donde se guardan los datos reales de la DB
+postgres_data/
+pgdata/
+
+# Variables de entorno (SÚPER IMPORTANTE)
+# Nunca subas contraseñas reales al repo
+.env
+.env.local
+*.env
+
+# Docker logs
+logs/
+*.log
+
+# Archivos temporales de sistema
+.DS_Store
+Thumbs.db
+
+# Si usas Keycloak con providers personalizados (Java)
+target/
+*.class
+.shared/
